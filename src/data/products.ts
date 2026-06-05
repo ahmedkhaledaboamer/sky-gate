@@ -39,39 +39,54 @@ export type Category = (typeof categories)[number];
 // Image pool — rotated across products so the catalog feels visually rich.
 const IMG = {
   herbalOil:
-  'https://images.unsplash.com/photo-1608248593842-8021b61f8524?auto=format&fit=crop&q=80&w=900',
+'/images/oil1.png',
   arganOil:
-  'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=900',
+  '/images/oil4.png',
   amlaOil:
-  'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&q=80&w=900',
+  '/images/oil5.png',
   oliveOil:
-  'https://images.unsplash.com/photo-1571781526291-c477eb311dc6?auto=format&fit=crop&q=80&w=900',
+'/images/oil2.png',
   garlicOil:
-  'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=900',
+'/images/oil6.png',
   blackSeedOil:
-  'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80&w=900',
+'/images/oil3.png',
   hairSerum:
-  'https://images.unsplash.com/photo-1620916297897-1b1c1b1f0b8a?auto=format&fit=crop&q=80&w=900',
-  conditioner:
-  'https://images.unsplash.com/photo-1626015449880-c40546bfdfa3?auto=format&fit=crop&q=80&w=900',
-  hygieneWash:
-  'https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?auto=format&fit=crop&q=80&w=900',
-  calamineLotion:
-  'https://images.unsplash.com/photo-1611080626919-7cf5a9dbab12?auto=format&fit=crop&q=80&w=900',
+'/images/hair.png',  conditioner:
+'/images/hair2.png',  hygieneWash:
+'/images/woman.png',  calamineLotion:
+'/images/care2.png',
   calamineCream:
-  'https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?auto=format&fit=crop&q=80&w=900',
-  sunscreen:
-  'https://images.unsplash.com/photo-1556228720-1c2f6bb24714?auto=format&fit=crop&q=80&w=900',
-  shampoo:
-  'https://images.unsplash.com/photo-1626015449880-c40546bfdfa3?auto=format&fit=crop&q=80&w=900',
+'/images/care.png',
+  sunscreen30lotion:
+'/images/sun1.png',
+
+sunscreen50lotion:
+'/images/sun3.png',
+
+sunscreen30cream:
+'/images/sun4.png',
+
+sunscreen50cream:
+'/images/sun2.png',
+anti_dandruff_shampoo:
+'/images/sh1.png',
+Hair_Fall_Control_Shampoo:
+'/images/sh2.png',
+Anti_Lice_Shampoo:
+'/images/sh3.png',
   faceWash:
-  'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=900',
-  gel: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80&w=900',
-  soap: 'https://images.unsplash.com/photo-1607006344380-b6775a0824ce?auto=format&fit=crop&q=80&w=900',
-  panthenol:
-  'https://images.unsplash.com/photo-1611080626919-7cf5a9dbab12?auto=format&fit=crop&q=80&w=900',
-  melasma:
-  'https://images.unsplash.com/photo-1620916297897-1b1c1b1f0b8a?auto=format&fit=crop&q=80&w=900'
+'/images/v1.png',
+  gel:'/images/v2.png',
+  Anti_Acne_Body_Spray:'/images/ant5.png',
+    soap:'/images/ant2.png',
+  panthenolcream:
+'/images/scan1.png',
+panthenolLotion:
+'/images/scan2.png',
+  melasmaLotion:
+'/images/ant1.png',
+melasmaCream:
+'/images/ant3.png',
 };
 
 const BG = [
@@ -265,15 +280,15 @@ export const products: Product[] = [
 },
 {
   id: 'black-seed-hair-oil',
-  name: { en: 'Black Seed Hair Oil', ar: 'زيت حبة البركة للشعر' },
+  name: { en: 'Black Seed Hair Oil', ar: 'زيت الحبة السوداء  للشعر' },
   category: 'Hair Care',
   shortDescription: {
     en: 'Black seed (Habbatussauda) oil with vitamin E to revitalize tired hair and protect the scalp.',
-    ar: 'زيت حبة البركة مع فيتامين هـ لإحياء الشعر المتعب وحماية فروة الرأس.'
+    ar: 'زيت   الحبة السوداء مع فيتامين هـ لإحياء الشعر المتعب وحماية فروة الرأس.'
   },
   fullDescription: {
     en: 'A revitalizing hair oil featuring traditional black seed (Nigella sativa) extract combined with olive, coconut, and sesame oils, plus vitamin E. Supports a balanced scalp and brings life back to dull, fatigued hair.',
-    ar: 'زيت شعر منعش يحتوي على خلاصة حبة البركة التقليدية مع زيوت الزيتون وجوز الهند والسمسم بالإضافة إلى فيتامين هـ. يدعم توازن فروة الرأس ويعيد الحياة للشعر الباهت والمتعب.'
+    ar: 'زيت شعر منعش يحتوي على خلاصة الحبة السوداء التقليدية مع زيوت الزيتون وجوز الهند والسمسم بالإضافة إلى فيتامين هـ. يدعم توازن فروة الرأس ويعيد الحياة للشعر الباهت والمتعب.'
   },
   image: IMG.blackSeedOil,
   bg: BG[1],
@@ -283,7 +298,7 @@ export const products: Product[] = [
   { en: 'Vitamin E enriched', ar: 'معزّز بفيتامين هـ' }],
 
   ingredients: [
-  { en: 'Black Seed Extract', ar: 'خلاصة حبة البركة' },
+  { en: 'Black Seed Extract', ar: 'خلاصة الحبة السوداء  ' },
   { en: 'Olive Oil', ar: 'زيت الزيتون' },
   { en: 'Coconut Oil', ar: 'زيت جوز الهند' },
   { en: 'Vitamin E (Tocopheryl Acetate)', ar: 'فيتامين هـ' }],
@@ -378,7 +393,7 @@ export const products: Product[] = [
     en: 'A daily-use anti-dandruff shampoo combining clinical-grade zinc pyrithione with tea tree oil, fenugreek, wheat germ, and rosemary extracts to clear flakes, balance the scalp, and leave hair fresh and clean.',
     ar: 'شامبو يومي ضد القشرة يجمع زنك بيريثيون بمستوى طبي مع زيت شجرة الشاي وخلاصات الحلبة وجنين القمح وإكليل الجبل لإزالة القشرة وموازنة فروة الرأس وترك الشعر منعشاً ونظيفاً.'
   },
-  image: IMG.shampoo,
+  image: IMG.anti_dandruff_shampoo,
   bg: BG[0],
   benefits: [
   { en: 'Reduces visible flakes', ar: 'يقلل القشرة الظاهرة' },
@@ -413,7 +428,7 @@ export const products: Product[] = [
     en: 'A fortifying shampoo formulated with castor oil, neem, rosemary, pumpkin seed extract, and tea tree oil to strengthen weak strands at the root, minimize breakage, and support visibly fuller hair over time.',
     ar: 'شامبو مقوٍّ بتركيبة من زيت الخروع والنيم وإكليل الجبل وخلاصة بذور اليقطين وزيت شجرة الشاي لتقوية الخصلات الضعيفة من الجذور وتقليل التكسر ودعم شعر أكثر كثافة بشكل ملحوظ مع مرور الوقت.'
   },
-  image: IMG.shampoo,
+  image: IMG.Hair_Fall_Control_Shampoo,
   bg: BG[1],
   benefits: [
   { en: 'Reduces hair fall over time', ar: 'يقلل تساقط الشعر مع الوقت' },
@@ -448,7 +463,7 @@ export const products: Product[] = [
     en: 'An effective anti-lice shampoo with tea tree oil, fenugreek extract, and green tea extract that helps eliminate lice while caring for the scalp. Gentle enough for regular family use.',
     ar: 'شامبو فعّال ضد القمل بزيت شجرة الشاي وخلاصتي الحلبة والشاي الأخضر يساعد على القضاء على القمل مع العناية بفروة الرأس. لطيف بما يكفي للاستخدام العائلي المنتظم.'
   },
-  image: IMG.shampoo,
+  image: IMG.Anti_Lice_Shampoo,
   bg: BG[2],
   benefits: [
   { en: 'Helps eliminate lice', ar: 'يساعد على القضاء على القمل' },
@@ -582,7 +597,7 @@ export const products: Product[] = [
     en: 'A lightweight broad-spectrum sunscreen lotion with SPF 30+ that protects against UVA/UVB rays while hydrating with shea butter, allantoin, and glycerin. Suitable for daily use under makeup or on its own.',
     ar: 'لوشن واقي شمس خفيف واسع الطيف بمعامل SPF 30+ يحمي من أشعة UVA/UVB مع الترطيب بزبدة الشيا والألانتوين والجلسرين. مناسب للاستخدام اليومي تحت المكياج أو منفرداً.'
   },
-  image: IMG.sunscreen,
+  image: IMG.sunscreen30lotion,
   bg: BG[2],
   benefits: [
   { en: 'Broad-spectrum SPF 30+', ar: 'حماية واسعة SPF 30+' },
@@ -615,7 +630,7 @@ export const products: Product[] = [
     en: 'A richer cream-textured SPF 30+ sunscreen ideal for face. Combines broad-spectrum UV filters with shea butter and allantoin for soft, protected, comfortable skin.',
     ar: 'كريم واقي شمس بقوام كريمي أغنى بمعامل SPF 30+ مثالي للوجه. يجمع فلاتر الأشعة فوق البنفسجية واسعة الطيف مع زبدة الشيا والألانتوين لبشرة ناعمة محمية ومريحة.'
   },
-  image: IMG.sunscreen,
+  image: IMG.sunscreen30cream,
   bg: BG[3],
   benefits: [
   { en: 'Rich, hydrating texture', ar: 'قوام غني مرطّب' },
@@ -646,7 +661,7 @@ export const products: Product[] = [
     en: 'Our highest-strength sunscreen lotion with SPF 50+ broad-spectrum protection. Filters approximately 98% of UVB rays while hydrating with shea butter and allantoin. Perfect for hot, sunny climates.',
     ar: 'لوشن واقي الشمس الأقوى لدينا بحماية واسعة الطيف SPF 50+. يفلتر نحو 98% من أشعة UVB مع الترطيب بزبدة الشيا والألانتوين. مثالي للمناخات الحارة والمشمسة.'
   },
-  image: IMG.sunscreen,
+  image: IMG.sunscreen50lotion,
   bg: BG[0],
   featured: true,
   benefits: [
@@ -680,7 +695,7 @@ export const products: Product[] = [
     en: 'A nourishing SPF 50+ face cream that delivers maximum daily UV protection in a soft, hydrating formula. Layers beautifully under makeup and helps prevent photo-aging.',
     ar: 'كريم وجه مغذٍّ بمعامل SPF 50+ يوفر أقصى حماية يومية من الأشعة فوق البنفسجية بتركيبة ناعمة ومرطّبة. يندمج بشكل رائع تحت المكياج ويساعد على منع شيخوخة الجلد الناتجة عن الشمس.'
   },
-  image: IMG.sunscreen,
+  image: IMG.sunscreen50cream,
   bg: BG[1],
   benefits: [
   { en: 'SPF 50+ broad-spectrum', ar: 'SPF 50+ واسع الطيف' },
@@ -785,7 +800,7 @@ export const products: Product[] = [
     en: 'A quick-drying anti-acne body spray with niacinamide, glycolic and salicylic acids, and tea tree oil. Reaches hard-to-cover areas like the back and shoulders to help clear body breakouts.',
     ar: 'بخاخ جسم سريع الجفاف ضد حب الشباب بالنياسيناميد وحمضي الجليكوليك والساليسيليك وزيت شجرة الشاي. يصل إلى المناطق التي يصعب الوصول إليها مثل الظهر والكتفين للمساعدة على تصفية حب شباب الجسم.'
   },
-  image: IMG.gel,
+  image: IMG.Anti_Acne_Body_Spray,
   bg: BG[0],
   benefits: [
   {
@@ -853,7 +868,7 @@ export const products: Product[] = [
     en: 'A reparative cream rich in D-panthenol (provitamin B5), hyaluronic acid, vitamin E, shea butter, and aloe vera. Soothes irritation, deeply hydrates, and restores comfort to dry, sensitive, or post-sun skin.',
     ar: 'كريم ترميمي غنيٌّ بالبانثينول (بروفيتامين ب5) وحمض الهيالورونيك وفيتامين هـ وزبدة الشيا والصبار. يهدّئ التهيّج ويرطّب بعمق ويعيد الراحة للبشرة الجافة أو الحساسة أو بعد التعرض للشمس.'
   },
-  image: IMG.panthenol,
+  image: IMG.panthenolcream,
   bg: BG[2],
   benefits: [
   { en: 'Repairs dry, stressed skin', ar: 'يصلح البشرة الجافة والمتعبة' },
@@ -884,7 +899,7 @@ export const products: Product[] = [
     en: 'A fast-absorbing lotion form of our panthenol treatment, ideal for face and body. Combines D-panthenol, hyaluronic acid, vitamin E, and aloe vera for everyday hydration and skin barrier support.',
     ar: 'لوشن سريع الامتصاص من علاج البانثينول لدينا، مثالي للوجه والجسم. يجمع البانثينول وحمض الهيالورونيك وفيتامين هـ والصبار للترطيب اليومي ودعم حاجز البشرة.'
   },
-  image: IMG.panthenol,
+  image: IMG.panthenolLotion,
   bg: BG[3],
   benefits: [
   { en: 'Lightweight everyday hydration', ar: 'ترطيب يومي خفيف' },
@@ -914,7 +929,7 @@ export const products: Product[] = [
     en: 'A targeted face wash for melasma and dark spots, formulated with glycolic acid, salicylic acid, niacinamide, and provitamin B5. Use as part of a daily routine that includes moisturizer and a minimum SPF 15 sunscreen.',
     ar: 'غسول وجه مستهدف للكلف والبقع الداكنة بتركيبة من حمض الجليكوليك وحمض الساليسيليك والنياسيناميد وبروفيتامين ب5. يُستخدم كجزء من روتين يومي يشمل مرطباً وواقياً للشمس بمعامل لا يقل عن SPF 15.'
   },
-  image: IMG.melasma,
+  image: IMG.melasmaLotion,
   bg: BG[0],
   benefits: [
   {
@@ -951,7 +966,7 @@ export const products: Product[] = [
     en: 'An advanced anti-melasma cream combining arbutin, kojic acid dipalmitate, niacinamide, and bearberry and licorice extracts. Targets pigmentation and dark spots while protecting with built-in zinc oxide and SPF support.',
     ar: 'كريم متقدم ضد الكلف يجمع الأربوتين وثنائي بالميتات الكوجيك والنياسيناميد وخلاصتي عنب الدب وعرق السوس. يستهدف التصبّغ والبقع الداكنة مع توفير الحماية بأكسيد الزنك ودعم واقٍ من الشمس.'
   },
-  image: IMG.melasma,
+  image: IMG.melasmaCream,
   bg: BG[1],
   benefits: [
   { en: 'Targets pigmentation', ar: 'يستهدف التصبّغ' },

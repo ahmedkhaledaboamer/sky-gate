@@ -1,5 +1,4 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+ import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
 import { useTranslations } from '../lib/i18n';
 export function AboutUs() {
@@ -33,9 +32,9 @@ export function AboutUs() {
               
               <div className="w-full h-full relative overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80&w=800"
+                  src="./images/care/banner11.jpeg"
                   alt="Cosmetics laboratory and product showcase"
-                  className="w-full h-full object-cover filter contrast-125 saturate-50" />
+                  className="w-full h-full object-cover f " />
                 
                 <div className="absolute inset-0 bg-saudi-midnight/10 mix-blend-multiply" />
               </div>
@@ -62,9 +61,9 @@ export function AboutUs() {
               
               <div className="w-full h-full relative overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1571781526291-c477eb311dc6?auto=format&fit=crop&q=80&w=400"
+                  src="./images/banner/b3.png"
                   alt="Beauty products flat lay"
-                  className="w-full h-full object-cover filter contrast-125 saturate-50" />
+                  className="w-full h-full object-cover " />
                 
                 <div className="absolute inset-0 bg-saudi-midnight/10 mix-blend-multiply" />
               </div>

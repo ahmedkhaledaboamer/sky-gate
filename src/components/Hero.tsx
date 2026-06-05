@@ -1,5 +1,4 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+ import { motion } from 'framer-motion';
 import { ShieldCheck, Star, Sparkles, ArrowRight } from 'lucide-react';
 import { useTranslations } from '../lib/i18n';
 export function Hero() {
@@ -138,9 +137,9 @@ export function Hero() {
                 <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-saudi-champagne"></div>
 
                 <img
-                  src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=800"
+                  src="./images/care/baner.jpeg"
                   alt="Beautiful healthy hair & glowing skin model"
-                  className="w-full h-full object-cover filter contrast-125 saturate-50" />
+                  className="w-full h-full object-cover  x" />
                 
               </div>
             </motion.div>

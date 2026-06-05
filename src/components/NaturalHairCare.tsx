@@ -117,7 +117,7 @@ export function NaturalHairCare() {
                   <img
                   src={product.image}
                   alt={product.name[locale]}
-                  className="w-full h-full object-cover filter contrast-125 saturate-50 group-hover:saturate-100 transition-all duration-500" />
+                  className="w-full h-full object-cover   " />
                 
                 </div>
 

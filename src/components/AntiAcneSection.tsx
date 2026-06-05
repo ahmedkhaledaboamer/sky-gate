@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Shield,
@@ -146,7 +146,7 @@ export function AntiAcneSection() {
                     <img
                     src={faceWash.image}
                     alt={faceWash.name[locale]}
-                    className="w-full h-full object-cover filter contrast-125 saturate-50 group-hover:saturate-100 transition-all duration-500" />
+                    className="w-full h-full object-cover  " />
                   
                   </div>
 

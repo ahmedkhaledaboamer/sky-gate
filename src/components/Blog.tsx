@@ -73,7 +73,7 @@ export function Blog() {
                 <img
                 src={post.image}
                 alt={post.title[locale]}
-                className="w-full h-full object-cover filter contrast-110 saturate-50 group-hover:saturate-100 transition-all duration-700" />
+                className="w-full h-full object-cover " />
               
                 <div className="absolute inset-0 bg-saudi-midnight/10 group-hover:bg-transparent transition-colors duration-500"></div>
                 <span className="absolute top-4 start-4 px-3 py-1 bg-saudi-midnight text-saudi-champagne text-[10px] font-bold tracking-widest uppercase border border-saudi-champagne/30">

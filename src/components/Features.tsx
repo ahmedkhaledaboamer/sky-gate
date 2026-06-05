@@ -1,5 +1,4 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+ import { motion } from 'framer-motion';
 import { Sparkles, Award, ArrowUpRight, ShieldCheck } from 'lucide-react';
 import { useTranslations } from '../lib/i18n';
 export function Features() {
@@ -65,7 +64,7 @@ export function Features() {
             className="lg:col-span-7 lg:row-span-2 group relative rounded-3xl overflow-hidden shadow-card hover:shadow-cardHover transition-shadow duration-500 min-h-[400px] lg:min-h-[520px]">
             
             <img
-              src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&q=80&w=1400"
+              src="./images/care/banner9.jpeg"
               alt={t('card1Title')}
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out" />
             

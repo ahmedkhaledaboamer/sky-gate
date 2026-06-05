@@ -1,5 +1,4 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+ import { motion } from 'framer-motion';
 import { useTranslations } from '../lib/i18n';
 import { ArrowRight } from 'lucide-react';
 export function Banner() {
@@ -8,9 +7,9 @@ export function Banner() {
     <section className="py-32 relative overflow-hidden border-t border-saudi-champagne/20">
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1615397323783-943388c69fdd?auto=format&fit=crop&q=80&w=1600"
+          src="./images/care/banner2.jpeg"
           alt=""
-          className="w-full h-full object-cover object-center filter contrast-125 saturate-50" />
+          className="w-full h-full object-cover object-center  " />
         
         <div className="absolute inset-0 bg-saudi-midnight/80 mix-blend-multiply"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-saudi-midnight via-saudi-midnight/50 to-transparent"></div>

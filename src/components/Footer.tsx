@@ -40,10 +40,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div>
             <div className="flex items-center gap-2 mb-6">
-              <Sparkles className="w-6 h-6 text-saudi-champagne" />
-              <span className="font-serif text-3xl font-semibold tracking-wide text-saudi-sand">
-                Dream & Shine
-              </span>
+              <img
+ src="/images/logo3.png"              alt="logo"
+              className="  w-24" />
             </div>
             <p className="text-saudi-sand/70 mb-6 leading-relaxed">
               {tFooter('tagline')}

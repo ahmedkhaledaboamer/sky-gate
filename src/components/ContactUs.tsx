@@ -209,9 +209,9 @@ export function ContactUs() {
             
             <div className="w-full h-full relative overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=800"
+                src="./images/care/banner13.jpeg"
                 alt=""
-                className="absolute inset-0 w-full h-full object-cover filter contrast-125 saturate-50" />
+                className="absolute inset-0 w-full h-full object-cover " />
               
               <div className="absolute inset-0 bg-saudi-midnight/20 mix-blend-multiply"></div>
               <div className="absolute inset-0 bg-gradient-to-t from-saudi-midnight via-saudi-midnight/40 to-transparent"></div>

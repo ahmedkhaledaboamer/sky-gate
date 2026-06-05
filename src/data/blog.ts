@@ -50,8 +50,7 @@ export const blogPosts: BlogPost[] = [
   }],
 
   category: 'Haircare',
-  image:
-  'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&q=80&w=1200',
+  image:'/images/banner/b3.png',
   date: '2026-04-12',
   readMinutes: 5,
   author: {
@@ -86,8 +85,7 @@ export const blogPosts: BlogPost[] = [
   }],
 
   category: 'Skincare',
-  image:
-  'https://images.unsplash.com/photo-1556228720-1c2f6bb24714?auto=format&fit=crop&q=80&w=1200',
+  image:'/images/banner/b1.png',
   date: '2026-03-28',
   readMinutes: 6,
   author: {
@@ -122,8 +120,7 @@ export const blogPosts: BlogPost[] = [
   }],
 
   category: 'Skincare',
-  image:
-  'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=1200',
+  image:'/images/banner/b19.png',
   date: '2026-03-15',
   readMinutes: 4,
   author: {
@@ -159,7 +156,7 @@ export const blogPosts: BlogPost[] = [
 
   category: 'Business',
   image:
-  'https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=1200',
+'/images/banner/b6.png',
   date: '2026-02-22',
   readMinutes: 7,
   author: {
@@ -190,7 +187,7 @@ export const blogPosts: BlogPost[] = [
 
   category: 'Skincare',
   image:
-  'https://images.unsplash.com/photo-1571781526291-c477eb311dc6?auto=format&fit=crop&q=80&w=1200',
+'/images/banner/b8.png',
   date: '2026-02-08',
   readMinutes: 5,
   author: {
@@ -221,7 +218,7 @@ export const blogPosts: BlogPost[] = [
 
   category: 'Wellness',
   image:
-  'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=1200',
+'/images/banner/b2.png',
   date: '2026-01-30',
   readMinutes: 4,
   author: {

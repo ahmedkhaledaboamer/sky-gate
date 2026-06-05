@@ -1,5 +1,4 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+ import { motion } from 'framer-motion';
 import { Droplets, Leaf, Heart, ArrowRight } from 'lucide-react';
 import { useTranslations } from '../lib/i18n';
 export function WhyChooseUs() {
@@ -12,7 +11,7 @@ export function WhyChooseUs() {
     stat: '98%',
     statLabel: 'Customer satisfaction',
     image:
-    'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=1200',
+    './images/care/banner3.jpeg',
     imageAlt: 'Anti-acne skincare formulation'
   },
   {
@@ -22,7 +21,7 @@ export function WhyChooseUs() {
     stat: '12+',
     statLabel: 'Natural extracts per blend',
     image:
-    'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?auto=format&fit=crop&q=80&w=1200',
+    './images/care/banner15.jpeg',
     imageAlt: 'Botanical hair care ingredients'
   },
   {
@@ -32,7 +31,7 @@ export function WhyChooseUs() {
     stat: '50+',
     statLabel: 'Products across categories',
     image:
-    'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&q=80&w=1200',
+    './images/care/banner10.jpeg',
     imageAlt: 'Complete skin and body care collection'
   }] as
   const;

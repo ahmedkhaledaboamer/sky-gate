@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Briefcase,
@@ -58,9 +58,9 @@ export function Agents() {
             <div className="border border-saudi-champagne p-2 bg-saudi-sand aspect-[4/3]">
               <div className="w-full h-full relative overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=800"
+                  src="./images/care/banner12.jpeg"
                   alt="Business partnership and boutique"
-                  className="w-full h-full object-cover filter contrast-125 saturate-50" />
+                  className="w-full h-full object-cover " />
                 
                 <div className="absolute inset-0 bg-saudi-midnight/10 mix-blend-multiply" />
               </div>

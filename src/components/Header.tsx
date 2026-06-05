@@ -79,10 +79,9 @@ export function Header() {
       
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-2 group shrink-0">
-          <Sparkles className="w-5 h-5 text-saudi-champagne transition-transform group-hover:rotate-12" />
-          <span className="font-serif text-2xl font-semibold text-saudi-midnight tracking-wide">
-            Dream & Shine
-          </span>
+          <img
+ src="/images/logo2.png"              alt="logo"
+              className="  w-24" />
         </Link>
 
         {/* Desktop Nav */}

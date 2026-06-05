@@ -167,9 +167,9 @@ export function SummerSunProtection() {
             <div className="relative aspect-[4/5] max-w-md mx-auto border border-saudi-champagne p-2 bg-saudi-sand">
               <div className="w-full h-full relative overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1556228720-1c2f6bb24714?auto=format&fit=crop&q=80&w=900"
+                  src="./images/care/banner2.jpeg"
                   alt={t('imageAlt')}
-                  className="w-full h-full object-cover filter contrast-125 saturate-50" />
+                  className="w-full h-full object-cover " />
                 
                 <div className="absolute inset-0 bg-saudi-midnight/10 mix-blend-multiply" />
               </div>
