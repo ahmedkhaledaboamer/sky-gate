@@ -112,7 +112,7 @@ export function Hero() {
             </div>
           </motion.div>
 
-          <div className="relative h-[700px] hidden lg:block">
+          <div className="relative h-[400px] md:h-[600px] lg:h-[700px] block">
             <motion.div
               initial={{
                 opacity: 0,
@@ -139,7 +139,7 @@ export function Hero() {
                 <img
                   src="./images/care/banner16.png"
                   alt="Beautiful healthy hair & glowing skin model"
-                  className="w-full h-full object-cover  x" />
+                  className="w-full h-full object-cover" />
                 
               </div>
             </motion.div>
