@@ -31,7 +31,7 @@ export function WhyChooseUs() {
     stat: '50+',
     statLabel: 'Products across categories',
     image:
-    './images/care/banner10.jpeg',
+    './images/care/baner.jpeg',
     imageAlt: 'Complete skin and body care collection'
   }] as
   const;

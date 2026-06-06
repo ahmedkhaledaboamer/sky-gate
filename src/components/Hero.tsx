@@ -137,7 +137,7 @@ export function Hero() {
                 <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-saudi-champagne"></div>
 
                 <img
-                  src="./images/care/baner.jpeg"
+                  src="./images/care/banner16.png"
                   alt="Beautiful healthy hair & glowing skin model"
                   className="w-full h-full object-cover  x" />
                 

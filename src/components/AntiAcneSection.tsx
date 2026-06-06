@@ -142,9 +142,9 @@ export function AntiAcneSection() {
                     {t('stepBadge')} 01
                   </div>
 
-                  <div className="aspect-square mb-8 bg-saudi-ink flex items-center justify-center p-6 relative group border border-saudi-champagne/20 mt-6">
+                  <div className=" mb-8  flex items-center justify-center    mt-6">
                     <img
-                    src={faceWash.image}
+                    src="./images/care/banner17.png"
                     alt={faceWash.name[locale]}
                     className="w-full h-full object-cover  " />
                   

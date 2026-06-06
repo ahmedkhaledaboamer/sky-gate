@@ -32,7 +32,7 @@ export function AboutUs() {
               
               <div className="w-full h-full relative overflow-hidden">
                 <img
-                  src="./images/care/banner11.jpeg"
+                  src="./images/care/banner19.png"
                   alt="Cosmetics laboratory and product showcase"
                   className="w-full h-full object-cover f " />
                 
@@ -61,7 +61,7 @@ export function AboutUs() {
               
               <div className="w-full h-full relative overflow-hidden">
                 <img
-                  src="./images/banner/b3.png"
+                  src="./images/care/banner20.png"
                   alt="Beauty products flat lay"
                   className="w-full h-full object-cover " />
                 
