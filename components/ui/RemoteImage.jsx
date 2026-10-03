@@ -10,7 +10,13 @@ import { ImageOff } from 'lucide-react';
  * `preload` marks the above-the-fold image (LCP). Falls back to a placeholder
  * when missing or broken.
  */
-export function RemoteImage({ src, alt = '', className = 'object-cover', sizes = '100vw', preload = false }) {
+// An API whose BASE_URL ends with "/" returns "https://host//products/x.jpeg":
+// collapse the extra slashes after the host (the server only answers "/products/…").
+const normalizeSrc = (src) =>
+  typeof src === 'string' ? src.replace(/^(https?:\/\/[^/]+)\/{2,}/, '$1/') : src;
+
+export function RemoteImage({ src: rawSrc, alt = '', className = 'object-cover', sizes = '100vw', preload = false }) {
+  const src = normalizeSrc(rawSrc);
   const [failedSrc, setFailedSrc] = useState(null);
   if (!src || failedSrc === src) {
     return (
