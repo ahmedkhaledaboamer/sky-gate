@@ -1,6 +1,9 @@
- import { motion } from 'framer-motion';
+'use client';
+
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { Sparkles, Award, ArrowUpRight, ShieldCheck } from 'lucide-react';
-import { useTranslations } from '../lib/i18n';
+import { useTranslations } from '@/lib/i18n';
 export function Features() {
   const t = useTranslations('Features');
   return (
@@ -13,20 +16,20 @@ export function Features() {
         <motion.div
           initial={{
             opacity: 0,
-            y: 20
+            y: 20,
           }}
           whileInView={{
             opacity: 1,
-            y: 0
+            y: 0,
           }}
           viewport={{
-            once: true
+            once: true,
           }}
           transition={{
-            duration: 0.6
+            duration: 0.6,
           }}
-          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
-          
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16"
+        >
           <div className="max-w-2xl">
             <span className="inline-block text-xs font-semibold tracking-[0.2em] text-teal-600 uppercase mb-4">
               Our edge
@@ -47,27 +50,31 @@ export function Features() {
           <motion.div
             initial={{
               opacity: 0,
-              y: 30
+              y: 30,
             }}
             whileInView={{
               opacity: 1,
-              y: 0
+              y: 0,
             }}
             viewport={{
               once: true,
-              margin: '-50px'
+              margin: '-50px',
             }}
             transition={{
               duration: 0.7,
-              ease: [0.22, 1, 0.36, 1]
+              ease: [0.22, 1, 0.36, 1],
             }}
-            className="lg:col-span-7 lg:row-span-2 group relative rounded-3xl overflow-hidden shadow-card hover:shadow-cardHover transition-shadow duration-500 min-h-[400px] lg:min-h-[520px]">
-            
-            <img
-              src="./images/care/banner9.jpeg"
+            className="lg:col-span-7 lg:row-span-2 group relative rounded-3xl overflow-hidden shadow-card hover:shadow-cardHover transition-shadow duration-500 min-h-[400px] lg:min-h-[520px]"
+          >
+            <Image
+              src="/images/care/banner9.jpeg"
               alt={t('card1Title')}
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out" />
-            
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
+              width={1280}
+              height={1280}
+              sizes="(min-width: 1024px) 60vw, 100vw"
+            />
+
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-slate-900/10" />
 
             {/* Top-right chip */}
@@ -100,23 +107,23 @@ export function Features() {
           <motion.div
             initial={{
               opacity: 0,
-              y: 30
+              y: 30,
             }}
             whileInView={{
               opacity: 1,
-              y: 0
+              y: 0,
             }}
             viewport={{
               once: true,
-              margin: '-50px'
+              margin: '-50px',
             }}
             transition={{
               duration: 0.7,
               delay: 0.1,
-              ease: [0.22, 1, 0.36, 1]
+              ease: [0.22, 1, 0.36, 1],
             }}
-            className="lg:col-span-5 group relative rounded-3xl bg-white p-8 md:p-10 shadow-soft hover:shadow-cardHover transition-all duration-500 border border-slate-100 flex flex-col">
-            
+            className="lg:col-span-5 group relative rounded-3xl bg-white p-8 md:p-10 shadow-soft hover:shadow-cardHover transition-all duration-500 border border-slate-100 flex flex-col"
+          >
             <div className="flex items-start justify-between mb-6">
               <div className="w-14 h-14 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center">
                 <ShieldCheck className="w-6 h-6" strokeWidth={1.75} />
@@ -148,23 +155,23 @@ export function Features() {
           <motion.div
             initial={{
               opacity: 0,
-              y: 30
+              y: 30,
             }}
             whileInView={{
               opacity: 1,
-              y: 0
+              y: 0,
             }}
             viewport={{
               once: true,
-              margin: '-50px'
+              margin: '-50px',
             }}
             transition={{
               duration: 0.7,
               delay: 0.2,
-              ease: [0.22, 1, 0.36, 1]
+              ease: [0.22, 1, 0.36, 1],
             }}
-            className="lg:col-span-3 rounded-3xl bg-slate-900 text-white p-8 md:p-9 flex flex-col justify-between shadow-card relative overflow-hidden">
-            
+            className="lg:col-span-3 rounded-3xl bg-slate-900 text-white p-8 md:p-9 flex flex-col justify-between shadow-card relative overflow-hidden"
+          >
             {/* Decorative corner */}
             <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-teal-500/20 blur-2xl" />
 
@@ -186,25 +193,25 @@ export function Features() {
           <motion.div
             initial={{
               opacity: 0,
-              y: 30
+              y: 30,
             }}
             whileInView={{
               opacity: 1,
-              y: 0
+              y: 0,
             }}
             viewport={{
               once: true,
-              margin: '-50px'
+              margin: '-50px',
             }}
             transition={{
               duration: 0.7,
               delay: 0.3,
-              ease: [0.22, 1, 0.36, 1]
+              ease: [0.22, 1, 0.36, 1],
             }}
-            className="lg:col-span-2 rounded-3xl bg-terra-soft p-8 md:p-9 flex flex-col justify-between border border-terra/20">
-            
+            className="lg:col-span-2 rounded-3xl bg-terra-soft p-8 md:p-9 flex flex-col justify-between border border-terra/20"
+          >
             <span className="font-serif text-6xl text-terra-deep leading-none">
-              "
+              &quot;
             </span>
             <p className="font-serif text-base md:text-lg italic text-slate-800 leading-snug">
               Quality you can feel, results you can see.
@@ -215,6 +222,6 @@ export function Features() {
           </motion.div>
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 }

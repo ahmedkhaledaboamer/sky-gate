@@ -1,36 +1,45 @@
-import React, { useState } from 'react';
-import {
-  Sparkles,
-  Instagram,
-  Facebook,
-  Twitter,
-  ArrowRight } from
-'lucide-react';
-import { useTranslations } from '../lib/i18n';
-import { sendToEmail } from '../lib/sendToEmail';
+'use client';
+
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
+import { Instagram, Facebook, Twitter, ArrowRight } from 'lucide-react';
+import { useLocale, useTranslations } from '@/lib/i18n';
+import { localized } from '@/lib/product';
+import { sendToEmail } from '@/lib/sendToEmail';
+import { useCategories } from '@/hooks/useCatalogOptions';
+
+const QUICK_LINK_HREFS = {
+  products: '/products',
+  categories: '/categories',
+  brands: '/brands',
+  blog: '/blog',
+};
 export function Footer() {
   const tFooter = useTranslations('Footer');
   const tHeader = useTranslations('Header');
   const [newsletterEmail, setNewsletterEmail] = useState('');
-  const quickLinks: Array<
-    'home' | 'products' | 'about' | 'agents' | 'blog' | 'contact'> =
-  ['home', 'products', 'about', 'agents', 'blog', 'contact'];
-  const categoryKeys = [
-  'catHairOils',
-  'catShampoo',
-  'catSunscreen',
-  'catSkin',
-  'catAcne'] as
-  const;
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const locale = useLocale();
+  const categories = useCategories();
+  const quickLinks = [
+    'home',
+    'products',
+    'categories',
+    'brands',
+    'about',
+    'blog',
+    'contact',
+  ];
+  const footerCategories = (categories.data ?? []).slice(0, 6);
+  const handleNewsletterSubmit = (e) => {
     e.preventDefault();
     if (!newsletterEmail.trim()) return;
     sendToEmail({
       subject: 'Newsletter Subscription',
       fields: {
         Email: newsletterEmail,
-        Source: 'Footer newsletter signup'
-      }
+        Source: 'Footer newsletter signup',
+      },
     });
     setNewsletterEmail('');
   };
@@ -40,9 +49,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div>
             <div className="flex items-center gap-2 mb-6">
-              <img
- src="/images/logo3.png"              alt="logo"
-              className="  w-24" />
+              <Image
+                src="/images/logo3.png"
+                alt={tFooter('logoAlt')}
+                className="  w-24"
+                width={577}
+                height={433}
+                sizes="96px"
+              />
             </div>
             <p className="text-saudi-sand/70 mb-6 leading-relaxed">
               {tFooter('tagline')}
@@ -51,22 +65,22 @@ export function Footer() {
               <a
                 href="#"
                 aria-label="Instagram"
-                className="w-10 h-10 rounded-full border border-saudi-champagne/30 flex items-center justify-center hover:bg-saudi-champagne hover:text-saudi-midnight transition-colors text-saudi-champagne">
-                
+                className="w-10 h-10 rounded-full border border-saudi-champagne/30 flex items-center justify-center hover:bg-saudi-champagne hover:text-saudi-midnight transition-colors text-saudi-champagne"
+              >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
                 href="#"
                 aria-label="Facebook"
-                className="w-10 h-10 rounded-full border border-saudi-champagne/30 flex items-center justify-center hover:bg-saudi-champagne hover:text-saudi-midnight transition-colors text-saudi-champagne">
-                
+                className="w-10 h-10 rounded-full border border-saudi-champagne/30 flex items-center justify-center hover:bg-saudi-champagne hover:text-saudi-midnight transition-colors text-saudi-champagne"
+              >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
                 href="#"
                 aria-label="Twitter"
-                className="w-10 h-10 rounded-full border border-saudi-champagne/30 flex items-center justify-center hover:bg-saudi-champagne hover:text-saudi-midnight transition-colors text-saudi-champagne">
-                
+                className="w-10 h-10 rounded-full border border-saudi-champagne/30 flex items-center justify-center hover:bg-saudi-champagne hover:text-saudi-midnight transition-colors text-saudi-champagne"
+              >
                 <Twitter className="w-5 h-5" />
               </a>
             </div>
@@ -77,22 +91,16 @@ export function Footer() {
               {tFooter('quickLinks')}
             </h4>
             <ul className="space-y-3">
-              {quickLinks.map((key) =>
-              <li key={key}>
-                  <a
-                  href={
-                  key === 'products' ?
-                  '/products' :
-                  key === 'blog' ?
-                  '/blog' :
-                  `#${key}`
-                  }
-                  className="text-saudi-sand/70 hover:text-saudi-champagne transition-colors">
-                  
+              {quickLinks.map((key) => (
+                <li key={key}>
+                  <Link
+                    href={QUICK_LINK_HREFS[key] ?? `/#${key}`}
+                    className="text-saudi-sand/70 hover:text-saudi-champagne transition-colors"
+                  >
                     {tHeader(key)}
-                  </a>
+                  </Link>
                 </li>
-              )}
+              ))}
             </ul>
           </div>
 
@@ -101,16 +109,24 @@ export function Footer() {
               {tFooter('categories')}
             </h4>
             <ul className="space-y-3">
-              {categoryKeys.map((key) =>
-              <li key={key}>
-                  <a
-                  href="/products"
-                  className="text-saudi-sand/70 hover:text-saudi-champagne transition-colors">
-                  
-                    {tFooter(key)}
-                  </a>
+              {footerCategories.map((category) => (
+                <li key={category._id}>
+                  <Link
+                    href={`/products?category=${category._id}`}
+                    className="text-saudi-sand/70 hover:text-saudi-champagne transition-colors"
+                  >
+                    {localized(category, 'name', locale)}
+                  </Link>
                 </li>
-              )}
+              ))}
+              <li>
+                <Link
+                  href="/categories"
+                  className="text-saudi-champagne hover:text-saudi-champagne-light transition-colors"
+                >
+                  {tFooter('allCategories')}
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -126,20 +142,24 @@ export function Footer() {
                 value={newsletterEmail}
                 onChange={(e) => setNewsletterEmail(e.target.value)}
                 placeholder={tFooter('emailPh')}
-                className="bg-saudi-ink border border-saudi-champagne/30 rounded-none px-4 py-2 w-full focus:outline-none focus:border-saudi-champagne text-saudi-sand placeholder-saudi-sand/50" />
-              
+                className="bg-saudi-ink border border-saudi-champagne/30 rounded-none px-4 py-2 w-full focus:outline-none focus:border-saudi-champagne text-saudi-sand placeholder-saudi-sand/50"
+              />
+
               <button
                 type="submit"
-                aria-label="Subscribe"
-                className="bg-saudi-champagne hover:bg-saudi-champagne-light text-saudi-midnight rounded-none px-4 py-2 transition-colors flex items-center justify-center">
-                
+                aria-label={tFooter('subscribe')}
+                className="bg-saudi-champagne hover:bg-saudi-champagne-light text-saudi-midnight rounded-none px-4 py-2 transition-colors flex items-center justify-center"
+              >
                 <ArrowRight className="w-5 h-5 rtl:rotate-180" />
               </button>
             </form>
             <div className="space-y-2 text-sm text-saudi-sand/70">
-              <p>Royal Care Trading Co.</p>
-              <p>Riyadh, Saudi Arabia</p>
-              <p dir="ltr">Email: royalcareuae@hotmail.com</p>
+              <p>{tFooter('company')}</p>
+              <p>{tFooter('address')}</p>
+              <p>
+                {tFooter('emailLabel')}{' '}
+                <span dir="ltr">royalcareuae@hotmail.com</span>
+              </p>
             </div>
           </div>
         </div>
@@ -147,10 +167,10 @@ export function Footer() {
         <div className="border-t border-saudi-champagne/20 pt-8 text-center text-saudi-sand/50 text-sm flex flex-col md:flex-row justify-between items-center gap-4">
           <p>{tFooter('copyright')}</p>
           <p className="text-saudi-champagne/70 uppercase tracking-widest text-xs">
-            Riyadh • Jeddah • Dammam • Khobar • Makkah • Madinah
+            {tFooter('cities')}
           </p>
         </div>
       </div>
-    </footer>);
-
+    </footer>
+  );
 }

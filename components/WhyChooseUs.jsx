@@ -1,40 +1,40 @@
- import { motion } from 'framer-motion';
+'use client';
+
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { Droplets, Leaf, Heart, ArrowRight } from 'lucide-react';
-import { useTranslations } from '../lib/i18n';
+import { useTranslations } from '@/lib/i18n';
 export function WhyChooseUs() {
   const t = useTranslations('WhyChooseUs');
   const features = [
-  {
-    titleKey: 'card1Title',
-    descKey: 'card1Desc',
-    icon: Droplets,
-    stat: '98%',
-    statLabel: 'Customer satisfaction',
-    image:
-    './images/care/banner3.jpeg',
-    imageAlt: 'Anti-acne skincare formulation'
-  },
-  {
-    titleKey: 'card2Title',
-    descKey: 'card2Desc',
-    icon: Leaf,
-    stat: '12+',
-    statLabel: 'Natural extracts per blend',
-    image:
-    './images/care/banner15.jpeg',
-    imageAlt: 'Botanical hair care ingredients'
-  },
-  {
-    titleKey: 'card3Title',
-    descKey: 'card3Desc',
-    icon: Heart,
-    stat: '50+',
-    statLabel: 'Products across categories',
-    image:
-    './images/care/baner.jpeg',
-    imageAlt: 'Complete skin and body care collection'
-  }] as
-  const;
+    {
+      titleKey: 'card1Title',
+      descKey: 'card1Desc',
+      icon: Droplets,
+      stat: '98%',
+      statLabel: 'Customer satisfaction',
+      image: '/images/care/banner3.jpeg',
+      imageAlt: 'Anti-acne skincare formulation',
+    },
+    {
+      titleKey: 'card2Title',
+      descKey: 'card2Desc',
+      icon: Leaf,
+      stat: '12+',
+      statLabel: 'Natural extracts per blend',
+      image: '/images/care/banner15.jpeg',
+      imageAlt: 'Botanical hair care ingredients',
+    },
+    {
+      titleKey: 'card3Title',
+      descKey: 'card3Desc',
+      icon: Heart,
+      stat: '50+',
+      statLabel: 'Products across categories',
+      image: '/images/care/baner.jpeg',
+      imageAlt: 'Complete skin and body care collection',
+    },
+  ];
   return (
     <section className="py-24 md:py-32 bg-white relative overflow-hidden">
       {/* Subtle background decoration */}
@@ -46,20 +46,20 @@ export function WhyChooseUs() {
         <motion.div
           initial={{
             opacity: 0,
-            y: 20
+            y: 20,
           }}
           whileInView={{
             opacity: 1,
-            y: 0
+            y: 0,
           }}
           viewport={{
-            once: true
+            once: true,
           }}
           transition={{
-            duration: 0.6
+            duration: 0.6,
           }}
-          className="text-center max-w-3xl mx-auto mb-20 md:mb-24">
-          
+          className="text-center max-w-3xl mx-auto mb-20 md:mb-24"
+        >
           <span className="inline-block text-xs font-semibold tracking-[0.2em] text-teal-600 uppercase mb-4">
             What makes us different
           </span>
@@ -79,34 +79,38 @@ export function WhyChooseUs() {
             return (
               <div
                 key={feature.titleKey}
-                className={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-12 lg:gap-20`}>
-                
+                className={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-12 lg:gap-20`}
+              >
                 {/* Image side */}
                 <motion.div
                   initial={{
                     opacity: 0,
-                    x: isReversed ? 60 : -60
+                    x: isReversed ? 60 : -60,
                   }}
                   whileInView={{
                     opacity: 1,
-                    x: 0
+                    x: 0,
                   }}
                   viewport={{
                     once: true,
-                    margin: '-100px'
+                    margin: '-100px',
                   }}
                   transition={{
                     duration: 0.8,
-                    ease: [0.22, 1, 0.36, 1]
+                    ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="w-full lg:w-1/2 relative">
-                  
+                  className="w-full lg:w-1/2 relative"
+                >
                   <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-card">
-                    <img
+                    <Image
                       src={feature.image}
                       alt={feature.imageAlt}
-                      className="w-full h-full object-cover" />
-                    
+                      className="w-full h-full object-cover"
+                      width={1280}
+                      height={1280}
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                    />
+
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent" />
                   </div>
 
@@ -115,22 +119,22 @@ export function WhyChooseUs() {
                     initial={{
                       opacity: 0,
                       scale: 0.9,
-                      y: 20
+                      y: 20,
                     }}
                     whileInView={{
                       opacity: 1,
                       scale: 1,
-                      y: 0
+                      y: 0,
                     }}
                     viewport={{
-                      once: true
+                      once: true,
                     }}
                     transition={{
                       duration: 0.6,
-                      delay: 0.3
+                      delay: 0.3,
                     }}
-                    className={`absolute ${isReversed ? '-left-4 md:-left-8 rtl:-left-auto rtl:-right-4 rtl:md:-right-8' : '-right-4 md:-right-8 rtl:-right-auto rtl:-left-4 rtl:md:-left-8'} bottom-8 md:bottom-12 bg-white rounded-2xl shadow-cardHover p-5 md:p-6 min-w-[180px] border border-slate-100`}>
-                    
+                    className={`absolute ${isReversed ? '-left-4 md:-left-8 rtl:-left-auto rtl:-right-4 rtl:md:-right-8' : '-right-4 md:-right-8 rtl:-right-auto rtl:-left-4 rtl:md:-left-8'} bottom-8 md:bottom-12 bg-white rounded-2xl shadow-cardHover p-5 md:p-6 min-w-[180px] border border-slate-100`}
+                  >
                     <div className="font-serif text-4xl md:text-5xl font-bold text-teal-500 leading-none mb-2">
                       {feature.stat}
                     </div>
@@ -141,8 +145,8 @@ export function WhyChooseUs() {
 
                   {/* Step number watermark */}
                   <div
-                    className={`hidden lg:block absolute top-0 ${isReversed ? '-right-6 rtl:-right-auto rtl:-left-6' : '-left-6 rtl:-left-auto rtl:-right-6'} font-serif text-[120px] font-bold text-slate-100 leading-none select-none pointer-events-none -translate-y-4`}>
-                    
+                    className={`hidden lg:block absolute top-0 ${isReversed ? '-right-6 rtl:-right-auto rtl:-left-6' : '-left-6 rtl:-left-auto rtl:-right-6'} font-serif text-[120px] font-bold text-slate-100 leading-none select-none pointer-events-none -translate-y-4`}
+                  >
                     0{index + 1}
                   </div>
                 </motion.div>
@@ -151,23 +155,23 @@ export function WhyChooseUs() {
                 <motion.div
                   initial={{
                     opacity: 0,
-                    x: isReversed ? -60 : 60
+                    x: isReversed ? -60 : 60,
                   }}
                   whileInView={{
                     opacity: 1,
-                    x: 0
+                    x: 0,
                   }}
                   viewport={{
                     once: true,
-                    margin: '-100px'
+                    margin: '-100px',
                   }}
                   transition={{
                     duration: 0.8,
                     ease: [0.22, 1, 0.36, 1],
-                    delay: 0.1
+                    delay: 0.1,
                   }}
-                  className="w-full lg:w-1/2">
-                  
+                  className="w-full lg:w-1/2"
+                >
                   {/* Icon chip */}
                   <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-teal-50 text-teal-600 mb-6 shadow-soft">
                     <Icon className="w-6 h-6" strokeWidth={1.75} />
@@ -194,19 +198,19 @@ export function WhyChooseUs() {
                   {/* Learn more link */}
                   <a
                     href="#products"
-                    className="group inline-flex items-center gap-2 text-sm font-semibold text-slate-900 hover:text-teal-600 transition-colors">
-                    
+                    className="group inline-flex items-center gap-2 text-sm font-semibold text-slate-900 hover:text-teal-600 transition-colors"
+                  >
                     <span className="border-b border-slate-300 group-hover:border-teal-600 pb-1 transition-colors">
                       Learn more
                     </span>
                     <ArrowRight className="w-4 h-4 rtl:rotate-180 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
                   </a>
                 </motion.div>
-              </div>);
-
+              </div>
+            );
           })}
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 }

@@ -1,36 +1,29 @@
-import React, { useState } from 'react';
+'use client';
+
+import Image from 'next/image';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Check, Send } from 'lucide-react';
-import { useTranslations } from '../lib/i18n';
-import { sendToEmail } from '../lib/sendToEmail';
-interface ContactForm {
-  fullName: string;
-  company: string;
-  email: string;
-  phone: string;
-  country: string;
-  message: string;
-}
-const empty: ContactForm = {
+import { useTranslations } from '@/lib/i18n';
+import { sendToEmail } from '@/lib/sendToEmail';
+const empty = {
   fullName: '',
   company: '',
   email: '',
   phone: '',
   country: '',
-  message: ''
+  message: '',
 };
 export function ContactUs() {
   const t = useTranslations('Contact');
-  const [form, setForm] = useState<ContactForm>(empty);
+  const [form, setForm] = useState(empty);
   const [submitted, setSubmitted] = useState(false);
-  const handleChange =
-  (field: keyof ContactForm) =>
-  (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-  setForm((f) => ({
-    ...f,
-    [field]: e.target.value
-  }));
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (field) => (e) =>
+    setForm((f) => ({
+      ...f,
+      [field]: e.target.value,
+    }));
+  const handleSubmit = (e) => {
     e.preventDefault();
     sendToEmail({
       subject: `New Contact Request from ${form.fullName}`,
@@ -40,8 +33,8 @@ export function ContactUs() {
         Email: form.email,
         Phone: form.phone,
         Country: form.country,
-        Message: form.message
-      }
+        Message: form.message,
+      },
     });
     setSubmitted(true);
     setTimeout(() => {
@@ -52,27 +45,27 @@ export function ContactUs() {
   return (
     <section
       id="contact"
-      className="py-24 bg-saudi-sand border-t border-saudi-champagne/20">
-      
+      className="py-24 bg-saudi-sand border-t border-saudi-champagne/20"
+    >
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{
               opacity: 0,
-              y: 30
+              y: 30,
             }}
             whileInView={{
               opacity: 1,
-              y: 0
+              y: 0,
             }}
             viewport={{
-              once: true
+              once: true,
             }}
             transition={{
               duration: 0.8,
-              ease: 'easeOut'
-            }}>
-            
+              ease: 'easeOut',
+            }}
+          >
             <div className="mb-12">
               <h2 className="font-serif text-4xl md:text-5xl font-bold text-saudi-midnight mb-6 leading-tight">
                 {t('title')}
@@ -82,8 +75,8 @@ export function ContactUs() {
               </p>
             </div>
 
-            {submitted ?
-            <div className="border border-saudi-champagne bg-saudi-sand-deep p-10 text-center">
+            {submitted ? (
+              <div className="border border-saudi-champagne bg-saudi-sand-deep p-10 text-center">
                 <div className="w-16 h-16 border border-saudi-champagne flex items-center justify-center mx-auto mb-6 bg-saudi-sand">
                   <Check className="w-8 h-8 text-saudi-champagne" />
                 </div>
@@ -91,34 +84,34 @@ export function ContactUs() {
                   {t('successTitle')}
                 </h3>
                 <p className="text-saudi-ink/80">{t('successDesc')}</p>
-              </div> :
-
-            <form className="space-y-6" onSubmit={handleSubmit}>
+              </div>
+            ) : (
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-xs font-bold text-saudi-midnight mb-2 uppercase tracking-widest">
                       {t('fullName')}
                     </label>
                     <input
-                    required
-                    type="text"
-                    value={form.fullName}
-                    onChange={handleChange('fullName')}
-                    className="w-full px-4 py-3 rounded-none border border-saudi-champagne/40 focus:outline-none focus:ring-1 focus:ring-saudi-champagne focus:border-saudi-champagne transition-shadow bg-saudi-sand-deep/50 text-saudi-midnight placeholder-saudi-midnight/40"
-                    placeholder={t('fullNamePh')} />
-                  
+                      required
+                      type="text"
+                      value={form.fullName}
+                      onChange={handleChange('fullName')}
+                      className="w-full px-4 py-3 rounded-none border border-saudi-champagne/40 focus:outline-none focus:ring-1 focus:ring-saudi-champagne focus:border-saudi-champagne transition-shadow bg-saudi-sand-deep/50 text-saudi-midnight placeholder-saudi-midnight/40"
+                      placeholder={t('fullNamePh')}
+                    />
                   </div>
                   <div>
                     <label className="block text-xs font-bold text-saudi-midnight mb-2 uppercase tracking-widest">
                       {t('company')}
                     </label>
                     <input
-                    type="text"
-                    value={form.company}
-                    onChange={handleChange('company')}
-                    className="w-full px-4 py-3 rounded-none border border-saudi-champagne/40 focus:outline-none focus:ring-1 focus:ring-saudi-champagne focus:border-saudi-champagne transition-shadow bg-saudi-sand-deep/50 text-saudi-midnight placeholder-saudi-midnight/40"
-                    placeholder={t('companyPh')} />
-                  
+                      type="text"
+                      value={form.company}
+                      onChange={handleChange('company')}
+                      className="w-full px-4 py-3 rounded-none border border-saudi-champagne/40 focus:outline-none focus:ring-1 focus:ring-saudi-champagne focus:border-saudi-champagne transition-shadow bg-saudi-sand-deep/50 text-saudi-midnight placeholder-saudi-midnight/40"
+                      placeholder={t('companyPh')}
+                    />
                   </div>
                 </div>
 
@@ -128,26 +121,26 @@ export function ContactUs() {
                       {t('email')}
                     </label>
                     <input
-                    required
-                    type="email"
-                    value={form.email}
-                    onChange={handleChange('email')}
-                    className="w-full px-4 py-3 rounded-none border border-saudi-champagne/40 focus:outline-none focus:ring-1 focus:ring-saudi-champagne focus:border-saudi-champagne transition-shadow bg-saudi-sand-deep/50 text-saudi-midnight placeholder-saudi-midnight/40"
-                    placeholder={t('emailPh')} />
-                  
+                      required
+                      type="email"
+                      value={form.email}
+                      onChange={handleChange('email')}
+                      className="w-full px-4 py-3 rounded-none border border-saudi-champagne/40 focus:outline-none focus:ring-1 focus:ring-saudi-champagne focus:border-saudi-champagne transition-shadow bg-saudi-sand-deep/50 text-saudi-midnight placeholder-saudi-midnight/40"
+                      placeholder={t('emailPh')}
+                    />
                   </div>
                   <div>
                     <label className="block text-xs font-bold text-saudi-midnight mb-2 uppercase tracking-widest">
                       {t('phone')}
                     </label>
                     <input
-                    required
-                    type="tel"
-                    value={form.phone}
-                    onChange={handleChange('phone')}
-                    className="w-full px-4 py-3 rounded-none border border-saudi-champagne/40 focus:outline-none focus:ring-1 focus:ring-saudi-champagne focus:border-saudi-champagne transition-shadow bg-saudi-sand-deep/50 text-saudi-midnight placeholder-saudi-midnight/40"
-                    placeholder={t('phonePh')} />
-                  
+                      required
+                      type="tel"
+                      value={form.phone}
+                      onChange={handleChange('phone')}
+                      className="w-full px-4 py-3 rounded-none border border-saudi-champagne/40 focus:outline-none focus:ring-1 focus:ring-saudi-champagne focus:border-saudi-champagne transition-shadow bg-saudi-sand-deep/50 text-saudi-midnight placeholder-saudi-midnight/40"
+                      placeholder={t('phonePh')}
+                    />
                   </div>
                 </div>
 
@@ -156,12 +149,12 @@ export function ContactUs() {
                     {t('country')}
                   </label>
                   <input
-                  type="text"
-                  value={form.country}
-                  onChange={handleChange('country')}
-                  className="w-full px-4 py-3 rounded-none border border-saudi-champagne/40 focus:outline-none focus:ring-1 focus:ring-saudi-champagne focus:border-saudi-champagne transition-shadow bg-saudi-sand-deep/50 text-saudi-midnight placeholder-saudi-midnight/40"
-                  placeholder={t('countryPh')} />
-                
+                    type="text"
+                    value={form.country}
+                    onChange={handleChange('country')}
+                    className="w-full px-4 py-3 rounded-none border border-saudi-champagne/40 focus:outline-none focus:ring-1 focus:ring-saudi-champagne focus:border-saudi-champagne transition-shadow bg-saudi-sand-deep/50 text-saudi-midnight placeholder-saudi-midnight/40"
+                    placeholder={t('countryPh')}
+                  />
                 </div>
 
                 <div>
@@ -169,50 +162,54 @@ export function ContactUs() {
                     {t('message')}
                   </label>
                   <textarea
-                  required
-                  rows={4}
-                  value={form.message}
-                  onChange={handleChange('message')}
-                  className="w-full px-4 py-3 rounded-none border border-saudi-champagne/40 focus:outline-none focus:ring-1 focus:ring-saudi-champagne focus:border-saudi-champagne transition-shadow bg-saudi-sand-deep/50 text-saudi-midnight placeholder-saudi-midnight/40 resize-none"
-                  placeholder={t('messagePh')}>
-                </textarea>
+                    required
+                    rows={4}
+                    value={form.message}
+                    onChange={handleChange('message')}
+                    className="w-full px-4 py-3 rounded-none border border-saudi-champagne/40 focus:outline-none focus:ring-1 focus:ring-saudi-champagne focus:border-saudi-champagne transition-shadow bg-saudi-sand-deep/50 text-saudi-midnight placeholder-saudi-midnight/40 resize-none"
+                    placeholder={t('messagePh')}
+                  ></textarea>
                 </div>
 
                 <button
-                type="submit"
-                className="w-full py-4 bg-saudi-midnight text-saudi-champagne font-semibold border border-saudi-champagne hover:bg-saudi-ink transition-colors uppercase tracking-wider text-sm inline-flex items-center justify-center gap-2">
-                
+                  type="submit"
+                  className="w-full py-4 bg-saudi-midnight text-saudi-champagne font-semibold border border-saudi-champagne hover:bg-saudi-ink transition-colors uppercase tracking-wider text-sm inline-flex items-center justify-center gap-2"
+                >
                   <Send className="w-4 h-4 rtl:rotate-180" />
                   {t('submit')}
                 </button>
               </form>
-            }
+            )}
           </motion.div>
 
           <motion.div
             initial={{
               opacity: 0,
-              x: 30
+              x: 30,
             }}
             whileInView={{
               opacity: 1,
-              x: 0
+              x: 0,
             }}
             viewport={{
-              once: true
+              once: true,
             }}
             transition={{
               duration: 0.8,
-              ease: 'easeOut'
+              ease: 'easeOut',
             }}
-            className="relative h-full min-h-[600px] border border-saudi-champagne p-2 bg-saudi-sand">
-            
+            className="relative h-full min-h-[600px] border border-saudi-champagne p-2 bg-saudi-sand"
+          >
             <div className="w-full h-full relative overflow-hidden">
-              <img
-                src="./images/care/banner13.jpeg"
+              <Image
+                src="/images/care/banner13.jpeg"
                 alt=""
-                className="absolute inset-0 w-full h-full object-cover " />
-              
+                className="absolute inset-0 w-full h-full object-cover "
+                width={1280}
+                height={1280}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+              />
+
               <div className="absolute inset-0 bg-saudi-midnight/20 mix-blend-multiply"></div>
               <div className="absolute inset-0 bg-gradient-to-t from-saudi-midnight via-saudi-midnight/40 to-transparent"></div>
 
@@ -250,6 +247,6 @@ export function ContactUs() {
           </motion.div>
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 }

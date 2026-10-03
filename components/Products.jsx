@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+'use client';
+
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import { products, type Product } from '../data/products';
-import { ProductModal } from './ProductModal';
-import { useLocale, useTranslations } from '../lib/i18n';
+import { products } from '@/data/products';
+import { useLocale, useTranslations } from '@/lib/i18n';
+
+// Loaded on demand: the modal is only needed after user interaction.
+const ProductModal = dynamic(
+  () => import('./ProductModal').then((m) => m.ProductModal),
+  { ssr: false }
+);
 export function Products() {
-  const navigate = useNavigate();
-  const [selected, setSelected] = useState<Product | null>(null);
+  const [selected, setSelected] = useState(null);
   const t = useTranslations('Products');
   const locale = useLocale();
   const featured = products.filter((p) => p.featured);
@@ -28,51 +36,54 @@ export function Products() {
             </p>
           </div>
 
-          <button
-            onClick={() => navigate('/products')}
-            className="hidden md:inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-slate-200 text-slate-900 font-medium text-sm hover:border-teal-500 hover:text-teal-600 transition-all shadow-soft hover:shadow-card shrink-0">
-            
+          <Link
+            href="/products"
+            className="hidden md:inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-slate-200 text-slate-900 font-medium text-sm hover:border-teal-500 hover:text-teal-600 transition-all shadow-soft hover:shadow-card shrink-0"
+          >
             {t('viewAll')}
             <ArrowRight className="w-4 h-4 rtl:rotate-180" />
-          </button>
+          </Link>
         </div>
 
         {/* Editorial Tile Cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-12">
-          {featured.map((product, index) =>
-          <motion.button
-            key={product.id}
-            type="button"
-            onClick={() => setSelected(product)}
-            initial={{
-              opacity: 0,
-              y: 24
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0
-            }}
-            viewport={{
-              once: true,
-              margin: '-50px'
-            }}
-            transition={{
-              delay: index * 0.08,
-              duration: 0.6,
-              ease: [0.22, 1, 0.36, 1]
-            }}
-            whileHover={{
-              y: -6
-            }}
-            className="group relative flex flex-col h-full bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-cardHover transition-shadow duration-500 text-left">
-            
+          {featured.map((product, index) => (
+            <motion.button
+              key={product.id}
+              type="button"
+              onClick={() => setSelected(product)}
+              initial={{
+                opacity: 0,
+                y: 24,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+                margin: '-50px',
+              }}
+              transition={{
+                delay: index * 0.08,
+                duration: 0.6,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              whileHover={{
+                y: -6,
+              }}
+              className="group relative flex flex-col h-full bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-cardHover transition-shadow duration-500 text-left"
+            >
               {/* Image Area (60% top) */}
               <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100">
-                <img
-                src={product.image}
-                alt={product.name[locale]}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
-              
+                <Image
+                  src={product.image}
+                  alt={product.name[locale]}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  width={500}
+                  height={500}
+                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                />
 
                 {/* Category Eyebrow Chip */}
                 <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4">
@@ -107,22 +118,22 @@ export function Products() {
                 </div>
               </div>
             </motion.button>
-          )}
+          ))}
         </div>
 
         {/* Mobile View All */}
         <div className="md:hidden text-center">
-          <button
-            onClick={() => navigate('/products')}
-            className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-white border border-slate-200 text-slate-900 font-medium text-sm hover:border-teal-500 hover:text-teal-600 transition-all shadow-soft">
-            
+          <Link
+            href="/products"
+            className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-white border border-slate-200 text-slate-900 font-medium text-sm hover:border-teal-500 hover:text-teal-600 transition-all shadow-soft"
+          >
             {t('viewAll')}
             <ArrowRight className="w-4 h-4 rtl:rotate-180" />
-          </button>
+          </Link>
         </div>
       </div>
 
       <ProductModal product={selected} onClose={() => setSelected(null)} />
-    </section>);
-
+    </section>
+  );
 }

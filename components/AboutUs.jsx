@@ -1,41 +1,48 @@
- import { motion } from 'framer-motion';
+'use client';
+
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
-import { useTranslations } from '../lib/i18n';
+import { useTranslations } from '@/lib/i18n';
 export function AboutUs() {
   const t = useTranslations('AboutUs');
-  const features = ['feature1', 'feature2', 'feature3', 'feature4'] as const;
+  const features = ['feature1', 'feature2', 'feature3', 'feature4'];
   return (
     <section
       id="about"
-      className="py-24 overflow-hidden bg-saudi-sand-deep border-t border-saudi-champagne/20">
-      
+      className="py-24 overflow-hidden bg-saudi-sand-deep border-t border-saudi-champagne/20"
+    >
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="relative">
             <motion.div
               initial={{
                 opacity: 0,
-                x: -30
+                x: -30,
               }}
               whileInView={{
                 opacity: 1,
-                x: 0
+                x: 0,
               }}
               viewport={{
-                once: true
+                once: true,
               }}
               transition={{
                 duration: 0.8,
-                ease: 'easeOut'
+                ease: 'easeOut',
               }}
-              className="relative z-10 border border-saudi-champagne p-2 bg-saudi-sand aspect-[4/5] max-w-md mx-auto lg:mx-0">
-              
+              className="relative z-10 border border-saudi-champagne p-2 bg-saudi-sand aspect-[4/5] max-w-md mx-auto lg:mx-0"
+            >
               <div className="w-full h-full relative overflow-hidden">
-                <img
-                  src="./images/care/banner19.png"
-                  alt="Cosmetics laboratory and product showcase"
-                  className="w-full h-full object-cover f " />
-                
+                <Image
+                  src="/images/care/banner19.png"
+                  alt={t('imageAlt1')}
+                  className="w-full h-full object-cover f "
+                  width={2048}
+                  height={2048}
+                  sizes="(min-width: 1024px) 448px, 90vw"
+                />
+
                 <div className="absolute inset-0 bg-saudi-midnight/10 mix-blend-multiply" />
               </div>
             </motion.div>
@@ -43,28 +50,32 @@ export function AboutUs() {
             <motion.div
               initial={{
                 opacity: 0,
-                scale: 0.8
+                scale: 0.8,
               }}
               whileInView={{
                 opacity: 1,
-                scale: 1
+                scale: 1,
               }}
               viewport={{
-                once: true
+                once: true,
               }}
               transition={{
                 duration: 0.8,
                 delay: 0.3,
-                ease: 'easeOut'
+                ease: 'easeOut',
               }}
-              className="absolute -bottom-10 -end-4 lg:-end-10 z-20 border border-saudi-champagne p-2 bg-saudi-sand w-2/3 aspect-square">
-              
+              className="absolute -bottom-10 -end-4 lg:-end-10 z-20 border border-saudi-champagne p-2 bg-saudi-sand w-2/3 aspect-square"
+            >
               <div className="w-full h-full relative overflow-hidden">
-                <img
-                  src="./images/care/banner20.png"
-                  alt="Beauty products flat lay"
-                  className="w-full h-full object-cover " />
-                
+                <Image
+                  src="/images/care/banner20.png"
+                  alt={t('imageAlt2')}
+                  className="w-full h-full object-cover "
+                  width={2048}
+                  height={2048}
+                  sizes="(min-width: 1024px) 300px, 66vw"
+                />
+
                 <div className="absolute inset-0 bg-saudi-midnight/10 mix-blend-multiply" />
               </div>
             </motion.div>
@@ -76,20 +87,20 @@ export function AboutUs() {
           <motion.div
             initial={{
               opacity: 0,
-              x: 30
+              x: 30,
             }}
             whileInView={{
               opacity: 1,
-              x: 0
+              x: 0,
             }}
             viewport={{
-              once: true
+              once: true,
             }}
             transition={{
               duration: 0.8,
-              ease: 'easeOut'
-            }}>
-            
+              ease: 'easeOut',
+            }}
+          >
             <div className="inline-flex items-center gap-2 mb-6 border-b border-saudi-champagne pb-2">
               <span className="text-xs font-semibold tracking-widest text-saudi-champagne uppercase">
                 {t('eyebrow')}
@@ -106,8 +117,8 @@ export function AboutUs() {
             </div>
 
             <div className="mt-12 grid sm:grid-cols-2 gap-6">
-              {features.map((key) =>
-              <div key={key} className="flex items-center gap-4">
+              {features.map((key) => (
+                <div key={key} className="flex items-center gap-4">
                   <div className="w-8 h-8 border border-saudi-champagne/40 bg-saudi-sand flex items-center justify-center shrink-0">
                     <CheckCircle2 className="w-4 h-4 text-saudi-champagne" />
                   </div>
@@ -115,11 +126,11 @@ export function AboutUs() {
                     {t(key)}
                   </span>
                 </div>
-              )}
+              ))}
             </div>
           </motion.div>
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 }

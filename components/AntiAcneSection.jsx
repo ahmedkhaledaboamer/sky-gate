@@ -1,3 +1,8 @@
+'use client';
+
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -5,21 +10,24 @@ import {
   Droplets,
   Sparkles,
   ArrowRight,
-  CheckCircle2 } from
-'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import { products, type Product } from '../data/products';
-import { ProductModal } from './ProductModal';
-import { useLocale, useTranslations } from '../lib/i18n';
+  CheckCircle2,
+} from 'lucide-react';
+import { products } from '@/data/products';
+import { useLocale, useTranslations } from '@/lib/i18n';
+
+// Loaded on demand: the modal is only needed after user interaction.
+const ProductModal = dynamic(
+  () => import('./ProductModal').then((m) => m.ProductModal),
+  { ssr: false }
+);
 export function AntiAcneSection() {
-  const navigate = useNavigate();
   const t = useTranslations('AntiAcne');
   const locale = useLocale();
-  const [selected, setSelected] = useState<Product | null>(null);
+  const [selected, setSelected] = useState(null);
   // Filter the 4 anti-acne products
   const acneProducts = products.filter((p) => p.category === 'Anti Acne');
   // Map products to steps based on ID
-  const getStepNumber = (id: string) => {
+  const getStepNumber = (id) => {
     if (id.includes('face-wash')) return 1;
     if (id.includes('soap')) return 2;
     if (id.includes('gel')) return 3;
@@ -32,27 +40,27 @@ export function AntiAcneSection() {
   );
   const faceWash = acneProducts.find((p) => p.id.includes('face-wash'));
   const steps = [
-  {
-    title: t('step1Title'),
-    desc: t('step1Desc'),
-    icon: Droplets
-  },
-  {
-    title: t('step2Title'),
-    desc: t('step2Desc'),
-    icon: Shield
-  },
-  {
-    title: t('step3Title'),
-    desc: t('step3Desc'),
-    icon: Sparkles
-  },
-  {
-    title: t('step4Title'),
-    desc: t('step4Desc'),
-    icon: CheckCircle2
-  }];
-
+    {
+      title: t('step1Title'),
+      desc: t('step1Desc'),
+      icon: Droplets,
+    },
+    {
+      title: t('step2Title'),
+      desc: t('step2Desc'),
+      icon: Shield,
+    },
+    {
+      title: t('step3Title'),
+      desc: t('step3Desc'),
+      icon: Sparkles,
+    },
+    {
+      title: t('step4Title'),
+      desc: t('step4Desc'),
+      icon: CheckCircle2,
+    },
+  ];
   return (
     <section className="py-24 relative overflow-hidden bg-saudi-sand border-t border-saudi-champagne/20">
       <div className="container mx-auto px-6 md:px-12 relative z-10">
@@ -85,22 +93,22 @@ export function AntiAcneSection() {
                     key={idx}
                     initial={{
                       opacity: 0,
-                      x: -20
+                      x: -20,
                     }}
                     whileInView={{
                       opacity: 1,
-                      x: 0
+                      x: 0,
                     }}
                     viewport={{
-                      once: true
+                      once: true,
                     }}
                     transition={{
                       delay: idx * 0.1,
                       duration: 0.5,
-                      ease: 'easeOut'
+                      ease: 'easeOut',
                     }}
-                    className="flex items-start gap-6">
-                    
+                    className="flex items-start gap-6"
+                  >
                     <div className="w-14 h-14 border border-saudi-champagne/40 bg-saudi-sand-deep flex items-center justify-center shrink-0 text-saudi-champagne">
                       <Icon className="w-6 h-6" />
                     </div>
@@ -110,44 +118,47 @@ export function AntiAcneSection() {
                       </h4>
                       <p className="text-saudi-ink/70 text-sm">{step.desc}</p>
                     </div>
-                  </motion.div>);
-
+                  </motion.div>
+                );
               })}
             </div>
           </div>
 
           {/* Right Column: Featured Hero Card */}
           <div className="lg:w-1/2 flex justify-center items-center">
-            {faceWash &&
-            <motion.div
-              initial={{
-                opacity: 0,
-                scale: 0.95
-              }}
-              whileInView={{
-                opacity: 1,
-                scale: 1
-              }}
-              viewport={{
-                once: true
-              }}
-              transition={{
-                duration: 0.7,
-                ease: 'easeOut'
-              }}
-              className="relative w-full max-w-md">
-              
+            {faceWash && (
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  scale: 0.95,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  scale: 1,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.7,
+                  ease: 'easeOut',
+                }}
+                className="relative w-full max-w-md"
+              >
                 <div className="relative bg-saudi-midnight p-8 border border-saudi-champagne">
                   <div className="absolute top-0 right-0 bg-saudi-champagne text-saudi-midnight text-xs font-bold px-4 py-2 uppercase tracking-widest">
                     {t('stepBadge')} 01
                   </div>
 
                   <div className=" mb-8  flex items-center justify-center    mt-6">
-                    <img
-                    src="./images/care/banner17.png"
-                    alt={faceWash.name[locale]}
-                    className="w-full h-full object-cover  " />
-                  
+                    <Image
+                      src="/images/care/banner17.png"
+                      alt={faceWash.name[locale]}
+                      className="w-full h-full object-cover  "
+                      width={2048}
+                      height={2048}
+                      sizes="(min-width: 1024px) 33vw, 100vw"
+                    />
                   </div>
 
                   <h3 className="font-serif text-3xl font-bold text-saudi-sand mb-4 text-center">
@@ -158,15 +169,15 @@ export function AntiAcneSection() {
                   </p>
 
                   <button
-                  onClick={() => setSelected(faceWash)}
-                  className="w-full py-4 bg-transparent border border-saudi-champagne text-saudi-champagne font-semibold hover:bg-saudi-champagne hover:text-saudi-midnight transition-colors duration-300 flex items-center justify-center gap-2 uppercase tracking-wider text-sm">
-                  
+                    onClick={() => setSelected(faceWash)}
+                    className="w-full py-4 bg-transparent border border-saudi-champagne text-saudi-champagne font-semibold hover:bg-saudi-champagne hover:text-saudi-midnight transition-colors duration-300 flex items-center justify-center gap-2 uppercase tracking-wider text-sm"
+                  >
                     {t('learnMore')}
                     <ArrowRight className="w-4 h-4 rtl:rotate-180" />
                   </button>
                 </div>
               </motion.div>
-            }
+            )}
           </div>
         </div>
 
@@ -179,23 +190,23 @@ export function AntiAcneSection() {
                 key={product.id}
                 initial={{
                   opacity: 0,
-                  y: 20
+                  y: 20,
                 }}
                 whileInView={{
                   opacity: 1,
-                  y: 0
+                  y: 0,
                 }}
                 viewport={{
-                  once: true
+                  once: true,
                 }}
                 transition={{
                   delay: index * 0.1,
                   duration: 0.5,
-                  ease: 'easeOut'
+                  ease: 'easeOut',
                 }}
                 onClick={() => setSelected(product)}
-                className="group cursor-pointer bg-saudi-sand-deep p-6 border border-saudi-champagne/20 hover:border-saudi-champagne transition-colors duration-300 flex flex-col h-full">
-                
+                className="group cursor-pointer bg-saudi-sand-deep p-6 border border-saudi-champagne/20 hover:border-saudi-champagne transition-colors duration-300 flex flex-col h-full"
+              >
                 <div className="flex justify-between items-center mb-6 border-b border-saudi-champagne/20 pb-4">
                   <span className="text-saudi-champagne text-xs font-bold uppercase tracking-widest">
                     {t('stepBadge')} 0{stepNum}
@@ -204,11 +215,14 @@ export function AntiAcneSection() {
                 </div>
 
                 <div className="relative w-full aspect-square mb-6 overflow-hidden bg-saudi-sand flex items-center justify-center p-4 border border-saudi-champagne/10">
-                  <img
+                  <Image
                     src={product.image}
                     alt={product.name[locale]}
-                    className="w-full h-full object-cover filter contrast-125 saturate-50 group-hover:saturate-100 transition-all duration-500" />
-                  
+                    className="w-full h-full object-cover filter contrast-125 saturate-50 group-hover:saturate-100 transition-all duration-500"
+                    width={500}
+                    height={500}
+                    sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
+                  />
                 </div>
 
                 <h3 className="font-serif text-xl font-bold text-saudi-midnight mb-3">
@@ -222,24 +236,24 @@ export function AntiAcneSection() {
                   {t('learnMore')}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform rtl:rotate-180" />
                 </div>
-              </motion.div>);
-
+              </motion.div>
+            );
           })}
         </div>
 
         {/* CTA */}
         <div className="text-center border-t border-saudi-champagne/20 pt-12">
-          <button
-            onClick={() => navigate('/products?category=Anti%20Acne')}
-            className="px-8 py-4 bg-saudi-midnight text-saudi-champagne font-semibold border border-saudi-champagne hover:bg-saudi-ink transition-colors uppercase tracking-wider text-sm inline-flex items-center gap-2">
-            
+          <Link
+            href="/products?category=Anti%20Acne"
+            className="px-8 py-4 bg-saudi-midnight text-saudi-champagne font-semibold border border-saudi-champagne hover:bg-saudi-ink transition-colors uppercase tracking-wider text-sm inline-flex items-center gap-2"
+          >
             {t('cta')}
             <ArrowRight className="w-4 h-4 rtl:rotate-180" />
-          </button>
+          </Link>
         </div>
       </div>
 
       <ProductModal product={selected} onClose={() => setSelected(null)} />
-    </section>);
-
+    </section>
+  );
 }

@@ -1,5 +1,9 @@
-import React, { useState } from 'react'
-import { motion } from 'framer-motion'
+'use client';
+
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 import {
   Briefcase,
   TrendingUp,
@@ -10,23 +14,15 @@ import {
   Phone,
   Mail,
   BadgeCheck,
-} from 'lucide-react'
-import { useLocale, useTranslations } from '../lib/i18n'
-import { AgencyRequestModal } from './AgencyRequestModal'
-interface Distributor {
-  name: {
-    en: string
-    ar: string
-  }
-  region: {
-    en: string
-    ar: string
-  }
-  phones: string[]
-  email?: string
-  placeholder?: boolean
-}
-const distributors: Distributor[] = [
+} from 'lucide-react';
+import { useLocale, useTranslations } from '@/lib/i18n';
+
+// Loaded on demand: the modal is only needed after user interaction.
+const AgencyRequestModal = dynamic(
+  () => import('./AgencyRequestModal').then((m) => m.AgencyRequestModal),
+  { ssr: false }
+);
+const distributors = [
   {
     name: {
       en: 'Sahha Daima Pharmaceuticals Co.',
@@ -51,37 +47,37 @@ const distributors: Distributor[] = [
     phones: [],
     placeholder: true,
   },
-]
+];
 export function Agents() {
-  const t = useTranslations('Agents')
-  const locale = useLocale()
-  const [modalOpen, setModalOpen] = useState(false)
+  const t = useTranslations('Agents');
+  const locale = useLocale();
+  const [modalOpen, setModalOpen] = useState(false);
   const benefits = [
     {
       icon: Briefcase,
-      key: 'benefit1' as const,
+      key: 'benefit1',
     },
     {
       icon: Megaphone,
-      key: 'benefit2' as const,
+      key: 'benefit2',
     },
     {
       icon: TrendingUp,
-      key: 'benefit3' as const,
+      key: 'benefit3',
     },
     {
       icon: Package,
-      key: 'benefit4' as const,
+      key: 'benefit4',
     },
-  ]
+  ];
   const directoryTitle =
-    locale === 'ar' ? 'وكلاؤنا المعتمدون' : 'Our Authorized Distributors'
+    locale === 'ar' ? 'وكلاؤنا المعتمدون' : 'Our Authorized Distributors';
   const directorySubtitle =
     locale === 'ar'
       ? 'شبكة موزّعينا الرسميين المعتمدين في المملكة العربية السعودية.'
-      : 'Our network of officially authorized distributors across Saudi Arabia.'
-  const verifiedLabel = locale === 'ar' ? 'موزّع معتمد' : 'Authorized'
-  const comingSoonLabel = locale === 'ar' ? 'قريباً' : 'Coming soon'
+      : 'Our network of officially authorized distributors across Saudi Arabia.';
+  const verifiedLabel = locale === 'ar' ? 'موزّع معتمد' : 'Authorized';
+  const comingSoonLabel = locale === 'ar' ? 'قريباً' : 'Coming soon';
   return (
     <section
       id="agents"
@@ -110,10 +106,13 @@ export function Agents() {
           >
             <div className="border border-saudi-champagne p-2 bg-saudi-sand aspect-[4/3]">
               <div className="w-full h-full relative overflow-hidden">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=800"
-                  alt="Business partnership and boutique"
+                  alt={t('imageAlt')}
                   className="w-full h-full object-cover filter contrast-125 saturate-50"
+                  width={800}
+                  height={600}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
                 />
                 <div className="absolute inset-0 bg-saudi-midnight/10 mix-blend-multiply" />
               </div>
@@ -302,5 +301,5 @@ export function Agents() {
         onClose={() => setModalOpen(false)}
       />
     </section>
-  )
+  );
 }

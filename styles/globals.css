@@ -1,5 +1,5 @@
-/* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap');
+/* Fonts are self-hosted via next/font (see app/fonts.js), which registers them
+   under their real family names, so the font stacks below are unchanged. */
 
 /* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
 @import 'tailwindcss/base';
@@ -13,17 +13,17 @@ html {
 }
 body {
   font-family: 'Manrope', sans-serif;
-  color: #1E293B; /* slate-800 */
-  background-color: #FAFAF7; /* warm off-white */
+  color: #1e293b; /* slate-800 */
+  background-color: #fafaf7; /* warm off-white */
 }
 .font-serif {
   font-family: 'Cormorant Garamond', serif;
 }
 /* Arabic typography */
-html[dir="rtl"] body {
+html[dir='rtl'] body {
   font-family: 'IBM Plex Sans Arabic', 'Manrope', sans-serif;
 }
-html[dir="rtl"] .font-serif {
+html[dir='rtl'] .font-serif {
   font-family: 'Amiri', 'Cormorant Garamond', serif;
 }
 /* Custom Scrollbar */
@@ -31,12 +31,12 @@ html[dir="rtl"] .font-serif {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #FAFAF7;
+  background: #fafaf7;
 }
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #31859F;
+  background: #31859f;
 }
